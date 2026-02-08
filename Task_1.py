@@ -54,12 +54,10 @@ class AddressBook(UserDict):
         self.data[record.name.value] = record
 
     def find(self, name):
-        for i in self.data.keys():
-            if i.lower() == name.lower():
-                return self.data[i]
+        return self.data.get(name)
 
     def delete(self, name):
-        del self.data[str(self.find(name).name)]
+        del self.data[name]
      
     def __str__(self):    # реалізація user-friendly виводу      
         return "\n".join(str(r) for r in self.data.values())
@@ -73,6 +71,5 @@ jane_record = Record('Jane')
 jane_record.add_phone('2222222222')
 jane_record.add_phone('3333333333')
 book.add_record(jane_record)
-
 
 
